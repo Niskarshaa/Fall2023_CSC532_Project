@@ -244,6 +244,16 @@ namespace Fall2020_CSC403_Project.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flicker_gif {
+            get {
+                object obj = ResourceManager.GetObject("flicker_gif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream gamemusic {
@@ -358,6 +368,16 @@ namespace Fall2020_CSC403_Project.Properties {
         internal static System.Drawing.Bitmap RandomPotion {
             get {
                 object obj = ResourceManager.GetObject("RandomPotion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap redcap {
+            get {
+                object obj = ResourceManager.GetObject("redcap", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -202,7 +202,12 @@ namespace Fall2020_CSC403_Project {
                         }
                         else
                         {
-                            Application.Exit();
+                            this.Close();
+                            instance = null;
+                            frmLevel.rpot = frmLevel.InstantiateItem(3, frmLevel, frmLevel.bossChatgpt.Position.x, frmLevel.bossChatgpt.Position.y);
+                            frmLevel.bossChatgpt = null;
+                            
+                            //Application.Exit();
                         }
                     }
                     else

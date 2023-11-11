@@ -24,9 +24,9 @@ namespace Fall2020_CSC403_Project.item_system
 
                 case 2: //"Enemy1Boom"
                     return new CheetoBoom(frmLevel, NUM_ITEMS, locationX, locationY);
-                /*
-                case 3: //"Enemy1Boom"
-                    return new Enemy1Boom();*/
+
+                case 3: //"RedPill"
+                    return new RedPill(frmLevel, NUM_ITEMS, locationX, locationY);
 
 
                 default:
