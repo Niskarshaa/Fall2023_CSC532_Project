@@ -186,18 +186,6 @@ namespace Fall2020_CSC403_Project {
                     if (x == true)
                     {
                         Fight(enemyPoisonPacket);
-                        // Generate a random number to get a random effect from the RandomPotion (first 3 potions will be random potion candidates)
-
-                        // In the current state, the potion cannot be generated under improper conditions, BUT
-                        // if you do something new like FLEE from battle, the potion will generate like this! Need a condition to fix this.
-                        // Wait to see how Nis implements flee
-                        //if (this.enemyPoisonPacket == null)
-                        //{
-                            // If, specifically, enemyPoisonPacket died within the battle form, after the battle generate the potion
-                            //  the other option to do this is to move rpot to inside the frmBattle instance code, but thats much heavier lifting than this
-                            //rpot = InstantiateItem(random.Next(1, 3), this, enemyPoisonPacket.Position.x, enemyPoisonPacket.Position.y);
-                        //}
-
                     }
                 }
             }
@@ -375,7 +363,7 @@ namespace Fall2020_CSC403_Project {
             }
             
             return hitAKey;
-        }
+        } 
 
         private bool HitAHeal(Character c)
         {
