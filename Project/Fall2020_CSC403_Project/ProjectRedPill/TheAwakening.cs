@@ -18,6 +18,7 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
         readonly bool isClickable = true;
         int clickCount = 0;
         private SoundPlayer sfxPlayer;
+        public static TrainingCenter frmTrainingCenter = null;
         public TheAwakening()
         {
             InitializeComponent();
@@ -72,6 +73,7 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
             // This function executes the typewriter effect required for the event
             return Task.Run(() =>
             {
+                // Loop through each character, use invoker to append character to string, delay each append to create effect
                 for (int i = 0; i <= txt.Length; i++)
                 {
                     lbl.Invoke((MethodInvoker)delegate
@@ -106,7 +108,6 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
                     await TypeWriterEffect("? : In your simulated world, you believed you defeated chatgpt. You even thought peanuts could kill koolaid, but the real situation is much different.", label1, 100);
                     // Then the button to move text forward is shown
                     button1.Visible = true;
-                    //button1.Enabled = true;
                     // Button blinks again to show user it can be clicked
                     Blink(true);
 
@@ -118,7 +119,6 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
                     pictureBox2.Visible = true;
                     await TypeWriterEffect("Me : I...see. What happens now? ", label1, 150);
                     button1.Visible = true;
-                    //button1.Enabled = true;
                     Blink(true);
                 }
                 else if (clickCount == 3)
@@ -127,15 +127,21 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
                     pictureBox3.Visible = true;
                     await TypeWriterEffect("? : Presently, Chatgpt is still running the show. We do what we can to fight back. Follow me, we have much work to do if you don't want to die immediately...", label1, 150);
                     button1.Visible = true;
-                    //button1.Enabled = true;
                     Blink(true);
                 }
                 else if (clickCount == 4) 
                 {
                     sfxPlayer.Stop();
+
                     sfxPlayer = new SoundPlayer(Resources.walking);
                     sfxPlayer.Play();
-                    //frmTrainingCenter = new TrainingCenter();
+                    await Task.Delay(3000);
+
+                    frmTrainingCenter = new TrainingCenter();
+                    frmTrainingCenter.Show();
+
+                    this.Hide();
+                    
                 }
             }
 
