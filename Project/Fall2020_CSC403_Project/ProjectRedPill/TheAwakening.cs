@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Fall2020_CSC403_Project.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,9 +14,10 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
 {
     public partial class TheAwakening: Form
     {
-        bool isBlinking = false;
-        bool isClickable = true;
+        //bool isBlinking = false;
+        readonly bool isClickable = true;
         int clickCount = 0;
+        private SoundPlayer sfxPlayer;
         public TheAwakening()
         {
             InitializeComponent();
@@ -24,9 +27,10 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
         {
             // Initially, make the button invisible and unworkable
             button1.Visible = false;
-
             // Do the gif event
             pictureBox1.Visible = false;
+            pictureBox2.Visible = false;
+            pictureBox3.Visible = false;
             await Task.Delay(3000);
             pictureBox1.Visible = true;
             await Task.Delay(6000);
@@ -34,7 +38,10 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
 
 
             // Write the first line of text
-            await TypeWriterEffect("Your entire life until this point has been a simulation...", label1, 200);
+            await TypeWriterEffect("You hear in the distance: Your entire life until this moment has been a simulation...", label1, 200);
+            sfxPlayer = new SoundPlayer(Resources.awakening);
+            sfxPlayer.PlayLooping();
+
             // Now that its written, make the button visible, focus on it so it can be either clicked or enter can be pressed, then make it blink
             //  to show the player that they can proceed in the text
             button1.Visible = true;
@@ -95,7 +102,8 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
                 {
 
                     // typewriter effect writes the text out
-                    await TypeWriterEffect("First line of text...", label1, 100);
+                    pictureBox3.Visible = true;
+                    await TypeWriterEffect("? : In your simulated world, you believed you defeated chatgpt. You even thought peanuts could kill koolaid, but the real situation is much different.", label1, 100);
                     // Then the button to move text forward is shown
                     button1.Visible = true;
                     //button1.Enabled = true;
@@ -106,17 +114,28 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
                 else if (clickCount == 2)
                 {
                     // And so on...
-                    await TypeWriterEffect("the second line of text...", label1, 200);
+                    pictureBox3.Visible = false;
+                    pictureBox2.Visible = true;
+                    await TypeWriterEffect("Me : I...see. What happens now? ", label1, 150);
                     button1.Visible = true;
                     //button1.Enabled = true;
                     Blink(true);
                 }
                 else if (clickCount == 3)
                 {
-                    await TypeWriterEffect("etc...", label1, 200);
-                    //button1.Visible = true;
+                    pictureBox2.Visible = false;
+                    pictureBox3.Visible = true;
+                    await TypeWriterEffect("? : Presently, Chatgpt is still running the show. We do what we can to fight back. Follow me, we have much work to do if you don't want to die immediately...", label1, 150);
+                    button1.Visible = true;
                     //button1.Enabled = true;
-                    //Blink(true);
+                    Blink(true);
+                }
+                else if (clickCount == 4) 
+                {
+                    sfxPlayer.Stop();
+                    sfxPlayer = new SoundPlayer(Resources.walking);
+                    sfxPlayer.Play();
+                    //frmTrainingCenter = new TrainingCenter();
                 }
             }
 

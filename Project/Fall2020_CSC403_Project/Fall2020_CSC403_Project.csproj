@@ -127,6 +127,12 @@
     <Compile Include="item-system\ItemFactory.cs" />
     <Compile Include="item-system\Items.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectRedPill\TrainingCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectRedPill\TrainingCenter.Designer.cs">
+      <DependentUpon>TrainingCenter.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectRedPill\TheAwakening.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,12 @@
     <EmbeddedResource Include="FrmLevel.resx">
       <DependentUpon>FrmLevel.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectRedPill\TheAwakening.resx">
+      <DependentUpon>TheAwakening.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectRedPill\TrainingCenter.resx">
+      <DependentUpon>TrainingCenter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -227,6 +239,7 @@
     <None Include="data\healing_potion.png" />
     <None Include="data\health_box.png" />
     <None Include="data\flicker_gif.gif" />
+    <None Include="data\awakening.wav" />
     <Content Include="data\iamchatgpt.png" />
     <None Include="data\ramboPeanut.png" />
     <None Include="data\Psychedelic.png" />
@@ -238,10 +251,16 @@
     <Content Include="data\flee.wav" />
     <Content Include="data\home.jpeg" />
     <Content Include="data\iamchatgpt2.png" />
+    <None Include="data\mysteriousFigure.png" />
+    <None Include="data\mysteryFigure2.png" />
     <Content Include="data\peanut.png" />
     <None Include="data\redcap.jpg" />
     <None Include="data\redcap.png" />
+    <None Include="data\silhouetteMan.png" />
+    <None Include="data\PlayerZero.png" />
     <Content Include="data\success.wav" />
+    <None Include="data\walking.wav" />
+    <None Include="data\TrainingFacility.png" />
     <Content Include="data\wall2.jpg" />
     <Content Include="data\wall3.jpg" />
     <None Include="data\newpic.png" />

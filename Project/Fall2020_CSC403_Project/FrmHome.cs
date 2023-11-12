@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fall2020_CSC403_Project.ProjectRedPill;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,7 @@ namespace Fall2020_CSC403_Project
         private List<string> label2Text = new List<string>();
         private int currentImageIndex = 0;
         public static FrmLevel gameplayForm = null;
+        public static TheAwakening frmAwakening = null;
         public FrmHome()
         {
             InitializeComponent();

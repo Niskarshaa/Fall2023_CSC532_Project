@@ -6,6 +6,7 @@ using Fall2020_CSC403_Project.item_system;
 using Fall2020_CSC403_Project.item_system.interfaces;
 using Fall2020_CSC403_Project.Properties;
 using System.Media;
+using Fall2020_CSC403_Project.ProjectRedPill;
 
 namespace Fall2020_CSC403_Project {
 
@@ -19,6 +20,7 @@ namespace Fall2020_CSC403_Project {
         public Enemy enemyCheeto;
         public Character[] walls, fences, dialog, key, healing_potion;
         public static SoundPlayer levelMusic; // background music for the level
+
 
         private DateTime timeBegin;
         public FrmBattle frmBattle;
@@ -177,7 +179,6 @@ namespace Fall2020_CSC403_Project {
             }
 
             // check collision with enemies
-
             if (enemyPoisonPacket != null)
             {
                 if (HitAChar(player, enemyPoisonPacket))
@@ -189,11 +190,6 @@ namespace Fall2020_CSC403_Project {
                     }
                 }
             }
-            //else if (enemyPoisonPacket == null) 
-            //{
-                // enemyPoisonPacket died and was thus nulled after killing him
-                //rpot = InstantiateItem(random.Next(1, 3), this, enemyPoisonPacket.Position.x, enemyPoisonPacket.Position.y);
-            //}
 
             if (enemyCheeto != null) {
                 if (HitAChar(player, enemyCheeto)){

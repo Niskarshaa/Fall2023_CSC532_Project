@@ -18,7 +18,10 @@ namespace Fall2020_CSC403_Project {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
       frmHome = new FrmHome();
-      Application.Run(frmHome);
+            //Application.Run(frmHome);
+            //Application.Run(new ProjectRedPill.TheAwakening());
+            Application.Run(new ProjectRedPill.TrainingCenter());
+      
     }
   }
 }

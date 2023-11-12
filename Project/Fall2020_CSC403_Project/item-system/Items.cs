@@ -159,11 +159,13 @@ namespace Fall2020_CSC403_Project.item_system
         public RedPill(FrmLevel frmLevel, int numItems, float locXatLvl, float locYatLvl)
         {
             InitializeComponent(frmLevel, numItems, global::Fall2020_CSC403_Project.Properties.Resources.redcap, locXatLvl, locYatLvl, "RedPill", 50, 50, 18);
-            //picItem.BackColor = Color.Gray;
         }
         public void ExecuteEffect(FrmLevel frmLevel)
         {
             RemoveItemFromMap(this);
+            FrmHome.frmAwakening = new ProjectRedPill.TheAwakening();
+            FrmHome.frmAwakening.Show();
+            frmLevel.Hide();
         }
     }
 
