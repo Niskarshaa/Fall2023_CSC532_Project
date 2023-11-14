@@ -133,12 +133,22 @@ namespace Fall2020_CSC403_Project {
             const int MAX_HEALTHBAR_WIDTH = 200;
             lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
             lblPlayerHealthFull.Text = player.Health.ToString();
-            if (player.Health <= 16)
+            if (player.Health <= 16 && player.Health >= 13)
+            {
+                lblPlayerHealthFull.BackColor = Color.GreenYellow;
+            }
+            if (player.Health <= 12 && player.Health >= 9)
+            {
+                lblPlayerHealthFull.BackColor = Color.Yellow;
+            }
+            if (player.Health <= 8 && player.Health >= 5)
+            {
+                lblPlayerHealthFull.BackColor = Color.DarkOrange;
+            }
+            if (player.Health <= 4 && player.Health >= 1)
             {
                 lblPlayerHealthFull.BackColor = Color.DarkRed;
             }
-
-
 
         }
 

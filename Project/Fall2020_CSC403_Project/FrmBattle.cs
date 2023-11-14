@@ -131,7 +131,7 @@ namespace Fall2020_CSC403_Project {
 
         private async void btnAttack_Click(object sender, EventArgs e)
         {
-            player.OnAttack(-6);
+            player.OnAttack(-4);
 
             if (enemy.Health > 0)
             {
