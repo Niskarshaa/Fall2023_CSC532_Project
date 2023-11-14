@@ -523,7 +523,7 @@ namespace Fall2020_CSC403_Project {
             this.lblPlayerHealthFull.BackColor = System.Drawing.Color.Green;
             this.lblPlayerHealthFull.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblPlayerHealthFull.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerHealthFull.ForeColor = System.Drawing.Color.White;
+            this.lblPlayerHealthFull.ForeColor = System.Drawing.Color.Black;
             this.lblPlayerHealthFull.Location = new System.Drawing.Point(91, 43);
             this.lblPlayerHealthFull.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPlayerHealthFull.Name = "lblPlayerHealthFull";

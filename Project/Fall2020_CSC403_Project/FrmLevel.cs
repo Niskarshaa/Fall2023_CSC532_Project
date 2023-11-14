@@ -154,7 +154,6 @@ namespace Fall2020_CSC403_Project {
 
 
         private void tmrPlayerMove_Tick(object sender, EventArgs e) {
-            bool x,y,z;
             // move player
             player.Move();
 
@@ -192,8 +191,7 @@ namespace Fall2020_CSC403_Project {
             {
                 if (HitAChar(player, enemyPoisonPacket))
                 {
-                    x = IsEnemyDead(enemyPoisonPacket);
-                    if (x == true)
+                    if (IsEnemyDead(enemyPoisonPacket) == true)
                     {
                         Fight(enemyPoisonPacket);
                         // Generate a random number to get a random effect from the RandomPotion (first 3 potions will be random potion candidates)
@@ -219,8 +217,7 @@ namespace Fall2020_CSC403_Project {
 
             if (enemyCheeto != null) {
                 if (HitAChar(player, enemyCheeto)){
-                    y = IsEnemyDead(enemyCheeto);
-                    if (y == true) {
+                    if (IsEnemyDead(enemyCheeto) == true) {
                         Fight(enemyCheeto);
                     }
                 }
@@ -229,8 +226,7 @@ namespace Fall2020_CSC403_Project {
             if (bossChatgpt != null) {
                 if (HitAChar(player, bossChatgpt)) {
                     // not triggering
-                    z = IsEnemyDead(bossChatgpt);
-                    if (z == true)
+                    if (IsEnemyDead(bossChatgpt) == true)
                     {
                         Fight(bossChatgpt);
                     }
