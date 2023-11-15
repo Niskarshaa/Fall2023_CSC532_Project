@@ -14,68 +14,43 @@ namespace Fall2020_CSC403_Project {
 
         public Enemy enemy;
         private Player player;
-        private FrmLevel frmLevel;
-
-
-        public FrmBattle(FrmLevel frmLevelFromLvl) {
+        
+        public FrmBattle()
+        {
             InitializeComponent();
             player = Game.player;
             // TODO: use mplayer and pause game music while i attack, play sfx, then resume
             simpleSFX = new SoundPlayer(Resources.attack1SFX);
-            frmLevel = frmLevelFromLvl;
             FrmLevel.levelMusic.Stop();
 
         }
 
-        public void FormBattle_FormClosed(object sender, FormClosedEventArgs e)
+        private void FormBattle_Disposed(object sender, EventArgs e) 
         {
-
-            try
-            {
-                // If the player's health reached 0 and the form closed, the player died
-                //  so exit the game.
-                if (player.Health <= 0)
-                {
-                    System.Windows.Forms.MessageBox.Show("Game Over");
-
-                    Application.Exit();
-                }
-
-
-                // If player/enemy health>0 and form closes, the user closed the window
-                // You cannot run from battle by closing it!
-                if (player.Health > 0 && enemy.Health > 0)
-                {
-                    Application.Exit();
-                }
-
-                // If the battle closes normally , release the instance for future fights
-                //  so it does not lead to disposed exception.
-                if (enemy.Health <= 0)
-                {
-                    instance = null;
-                    //frmLevel.picPoisonPacket
-                }
-            }
-            catch
-            {
-                // enemy or player was likely null-ed
-            }
-
+            this.Close();
         }
-        public void Setup()
+        private void FormBattle_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // update for this enemy
+            // Not currently necessary, all scenarios are handled such as player.Health and enemy.Health
+        }
+
+            public void Setup()
+        {
+            // These should be called and setup with every instance of the enemy in case we switch between enemies
+            // Update for this enemy
             picEnemy.BackgroundImage = enemy.Img;
             picEnemy.Refresh();
             BackColor = enemy.Color;
             picEpicBossBattle.Visible = false;
             label3.Visible = false;
 
+
+            // This is the issue with flee. It should be called once ever for that enemy. Instead each time you flee and return,
+            //  it stacks on extra += PlayerDamage, EnemyDamage for heal and attacks, etc.
             // Observer pattern
-            enemy.AttackEvent += PlayerDamage;
+            /*enemy.AttackEvent += PlayerDamage;
             enemy.HealEvent += EnemyDamage;
-            player.AttackEvent += EnemyDamage;
+            player.AttackEvent += EnemyDamage;*/
 
             // show health
             UpdateHealthBars();
@@ -100,17 +75,13 @@ namespace Fall2020_CSC403_Project {
             CGPT cgpt = new CGPT();
             label3.Text = await cgpt.GetBossIntroStatement();
         }
-
-        // In order to make the instance nonnull, we use this. if its already non null, we can just use FrmBattle.instance to access it. 
-        // Or FrmBattle.attribute to access tha attribute if its public.
-        // Although, the instance of FrmBattle is tied to the enemy thats fighting the player in the said frmbattle.
-        // and everytime the instance is called, the frmbattle map is setup.
-        public static FrmBattle GetInstance(Enemy enemy, FrmLevel frmLevel)
+        
+        public static FrmBattle GetInstance(Enemy enemy)
         {
 
             if (instance == null)
             {
-                instance = new FrmBattle(frmLevel);
+                instance = new FrmBattle();
                 instance.enemy = enemy;
                 instance.Setup();
             }
@@ -131,7 +102,12 @@ namespace Fall2020_CSC403_Project {
 
         private async void btnAttack_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             player.OnAttack(-4);
+=======
+            //player.OnAttack(-6);
+            enemy.AlterHealth(-6);
+>>>>>>> 3969f4f87fb2c3efd884b9e366d0816f620a1cc3
 
             if (enemy.Health > 0)
             {
@@ -140,22 +116,26 @@ namespace Fall2020_CSC403_Project {
                 {
                     // Create the constructor
                     CGPT cgpt = new CGPT();
+
                     // use CGPT to get the boss's attack or heal decision!
                     var result = await cgpt.GetBossDecision(player.Health, enemy.Health, -4, -2, 3);
                     if (result.ToString() == "attack")
                     {
-                        enemy.OnAttack(-2);
+                        //enemy.OnAttack(-2);
+                        player.AlterHealth(-2);
                         label3.Text = $"You do 3 damage, and CGPT Attacks for 2 damage";
                     }
                     if (result.ToString() == "heal")
                     {
-                        enemy.OnHeal(4);
+                        //enemy.OnHeal(4);
+                        enemy.AlterHealth(4);
                         label3.Text = $"You do 3 damage, but CGPT Heals 4 health back!";
                     }
                 }
-                else // other enemies
+                else // enemy.Name == other enemies
                 {
-                    enemy.OnAttack(-2);
+                    //enemy.OnAttack(-2);
+                    player.AlterHealth(-2);
                     simpleSFX.PlaySync();
                 }
             }
@@ -181,59 +161,66 @@ namespace Fall2020_CSC403_Project {
 
             if (enemy.Health <= 0) {
 
-                try 
+                if (enemy == FrmHome.gameplayForm.bossChatgpt)
                 {
-                    if (enemy == FrmHome.gameplayForm.bossChatgpt)
+                    simpleSound = new SoundPlayer(Resources.congrats);
+                    simpleSound.Play();
+
+                    FrmHome.gameplayForm.picBossChatgpt.Visible = false;
+
+                    DialogResult gotoHomeDialogue = MessageBox.Show("You win!!! Want to play again?", "YOU WIN!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (gotoHomeDialogue == DialogResult.Yes)
                     {
-                        simpleSound = new SoundPlayer(Resources.congrats);
-                        simpleSound.Play();
-                        frmLevel.picBossChatgpt.Visible = false;
-                        //
-                        //frmLevel.bossChatgpt = null;
-                        DialogResult gotoHomeDialogue = MessageBox.Show("You win!!! Want to play again?", "YOU WIN!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (gotoHomeDialogue == DialogResult.Yes)
-                        {
-                            FrmHome.gameplayForm.Close();
-                            FrmHome.gameplayForm = null;
-                            Program.frmHome = new FrmHome();
-                            Program.frmHome.Show();
-                            this.Close();
-                            instance = null;
-                        }
-                        else
-                        {
-                            Application.Exit();
-                        }
+                        FrmHome.gameplayForm.Close();
+                        FrmHome.gameplayForm = null;
+                        Program.frmHome = new FrmHome();
+                        Program.frmHome.Show();
+                        this.Close();
+                        instance = null;
                     }
                     else
                     {
-                        // for all other enemies, after battle play another sound
-                        // Close the window and send to formclosed event
-                        if (frmLevel.enemyCheeto.Name == enemy.Name)
-                        {
-                            frmLevel.picEnemyCheeto.Visible = false;
-                            frmLevel.enemyCheeto = null;
-
-                        }
-                        else if (frmLevel.enemyPoisonPacket.Name == enemy.Name)
-                        {
-                            Random random = new Random();
-                            frmLevel.rpot = frmLevel.InstantiateItem(random.Next(1, 3), frmLevel, frmLevel.enemyPoisonPacket.Position.x, frmLevel.enemyPoisonPacket.Position.y);
-                            frmLevel.picEnemyPoisonPacket.Visible = false;
-                            frmLevel.enemyPoisonPacket = null;
-                            
-
-                        }
-                        this.Close();
-                        instance = null;
-                        
-
+                        Application.Exit();
                     }
                 }
-                catch 
+                else // for all other enemies
                 {
-                    // If you turn this on, and you attack too quickly, it will display because the attack is firing but the boss has already been nulled that it is checking
-                    //System.Windows.Forms.MessageBox.Show("Null exception on boss");
+                    if (FrmHome.gameplayForm.enemyCheeto != null) 
+                    {
+                        if (FrmHome.gameplayForm.enemyCheeto.Name == enemy.Name)
+                        {
+                            FrmHome.gameplayForm.picEnemyCheeto.Visible = false;
+                            FrmHome.gameplayForm.enemyCheeto = null;
+                        }
+                    }
+
+                    if (FrmHome.gameplayForm.enemyPoisonPacket != null) 
+                    {
+                        if (FrmHome.gameplayForm.enemyPoisonPacket.Name == enemy.Name)
+                        {
+                            Random random = new Random();
+
+                            // If cheeto is dead, we cant generate the item that blows him up. In this case, get random numbers until you can generate any other item.
+                            int rpotRandomNum = random.Next(1, 3);
+                            if (FrmHome.gameplayForm.enemyCheeto == null)// if cheeto not dead
+                            {
+                                
+                                while (rpotRandomNum == 2)
+                                {
+                                    rpotRandomNum = random.Next(1, 3);
+                                }
+                            }
+                            
+                            FrmHome.gameplayForm.rpot = FrmHome.gameplayForm.InstantiateItem(rpotRandomNum, FrmHome.gameplayForm, FrmHome.gameplayForm.enemyPoisonPacket.Position.x, FrmHome.gameplayForm.enemyPoisonPacket.Position.y);
+                            FrmHome.gameplayForm.picEnemyPoisonPacket.Visible = false;
+                            FrmHome.gameplayForm.enemyPoisonPacket = null;
+
+                        }
+                    }
+                    
+                    this.Close();
+                    instance = null;
+                        
                 }
             
             }
@@ -257,7 +244,10 @@ namespace Fall2020_CSC403_Project {
         {
             SoundPlayer simpleSound = new SoundPlayer(Resources.flee);
             simpleSound.Play();
-            this.Hide();
+            FrmBattle.instance.Close();
+            //instance = null;
+            FrmBattle.instance = null;
+            //this.Hide();
     
         }
 

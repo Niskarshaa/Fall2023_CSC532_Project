@@ -103,7 +103,7 @@ namespace Fall2020_CSC403_Project.item_system
 
         public void ExecuteEffect(FrmLevel frmLevel)
         {
-            EffectEvent(frmLevel, global::Fall2020_CSC403_Project.Properties.Resources.wallBoom1, 700, 400, "CheetoBoom", 300, 300, 18);
+            EffectEvent(frmLevel, global::Fall2020_CSC403_Project.Properties.Resources.wallBoom1,  (int)FrmHome.gameplayForm.enemyCheeto.Position.x-100, (int)FrmHome.gameplayForm.enemyCheeto.Position.y-100, "CheetoBoom", 300, 300, 18);
 
             // Remove enemy cheeto from map due to this CheetoBoom effect of Random Potion
             

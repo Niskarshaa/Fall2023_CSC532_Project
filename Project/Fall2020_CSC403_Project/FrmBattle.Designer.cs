@@ -34,11 +34,14 @@
             this.picPlayer = new System.Windows.Forms.PictureBox();
             this.tmrFinalBattle = new System.Windows.Forms.Timer(this.components);
             this.btnFlee = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.picEpicBossBattle)).BeginInit();
             this.label3 = new System.Windows.Forms.Label();
+            this.eventLog1 = new System.Diagnostics.EventLog();
+            this.eventLog2 = new System.Diagnostics.EventLog();
             ((System.ComponentModel.ISupportInitialize)(this.picEpicBossBattle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAttack
@@ -84,17 +87,6 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(305, 28);
             this.label2.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Silver;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(689, 453);
-            this.label3.MaximumSize = new System.Drawing.Size(50, 50);
-            this.label3.MinimumSize = new System.Drawing.Size(300, 140);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(300, 80);
-            this.label3.TabIndex = 8;
             // 
             // lblEnemyHealthFull
             // 
@@ -164,6 +156,25 @@
             this.btnFlee.UseVisualStyleBackColor = true;
             this.btnFlee.Click += new System.EventHandler(this.btnFlee_Click);
             // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Silver;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(689, 453);
+            this.label3.MaximumSize = new System.Drawing.Size(50, 50);
+            this.label3.MinimumSize = new System.Drawing.Size(300, 140);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(300, 140);
+            this.label3.TabIndex = 8;
+            // 
+            // eventLog1
+            // 
+            this.eventLog1.SynchronizingObject = this;
+            // 
+            // eventLog2
+            // 
+            this.eventLog2.SynchronizingObject = this;
+            // 
             // FrmBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -187,9 +198,13 @@
             this.Name = "FrmBattle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Fight!";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormBattle_FormClosed);
+            this.Disposed += this.FormBattle_Disposed;
             ((System.ComponentModel.ISupportInitialize)(this.picEpicBossBattle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog2)).EndInit();
             this.ResumeLayout(false);
 
     }
@@ -207,5 +222,7 @@
     public System.Windows.Forms.PictureBox picEnemy;
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Button btnFlee;
+        private System.Diagnostics.EventLog eventLog1;
+        private System.Diagnostics.EventLog eventLog2;
     }
 }

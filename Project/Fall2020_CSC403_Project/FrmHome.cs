@@ -63,15 +63,15 @@ namespace Fall2020_CSC403_Project
             if (selectedTheme == "New Theme")
             {
                 gameplayForm = new FrmLevel();
-                gameplayForm.Show();
                 gameplayForm.applyTheme1();
+                gameplayForm.Show();
                 this.Hide();
             }
             if (selectedTheme == "Invisible Theme")
             {
                 gameplayForm = new FrmLevel();
-                gameplayForm.Show();
                 gameplayForm.applyTheme2();
+                gameplayForm.Show();
                 this.Hide();
             }
         }
@@ -93,7 +93,8 @@ namespace Fall2020_CSC403_Project
                     }
                     break;
                 case Keys.S:
-                    FrmLevel gameplayForm = new FrmLevel();
+                    //FrmLevel gameplayForm = new FrmLevel();
+                    FrmHome.gameplayForm = new FrmLevel();
                     gameplayForm.Show();
                     this.Hide();
                     break;

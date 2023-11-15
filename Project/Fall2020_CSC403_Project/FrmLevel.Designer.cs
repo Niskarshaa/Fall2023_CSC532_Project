@@ -101,6 +101,7 @@ namespace Fall2020_CSC403_Project {
             this.tmrUpdateInGameTime.Enabled = true;
             this.tmrUpdateInGameTime.Tick += new System.EventHandler(this.tmrUpdateInGameTime_Tick);
             this.tmrUpdateInGameTime.Tick += new System.EventHandler(this.UpdatePlayerBar);
+            
             // 
             // tmrPlayerMove
             // 

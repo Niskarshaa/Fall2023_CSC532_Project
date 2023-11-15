@@ -21,7 +21,6 @@ namespace Fall2020_CSC403_Project {
         public static SoundPlayer levelMusic; // background music for the level
 
         private DateTime timeBegin;
-        public FrmBattle frmBattle;
         private Random random; // Random number generator for item system
         public IItem rpot; //rpot is always the handle regardless of the item called because its a random item, thus rpot
         private int keyHitCount = 0;
@@ -44,7 +43,6 @@ namespace Fall2020_CSC403_Project {
 
 
             player = new Player(CreatePosition(picPlayer), CreateCollider(picPlayer, PADDING));
-            //bossChatgpt = new Enemy(CreatePosition(picBossChatgpt), CreateCollider(picBossChatgpt, PADDING));
             bossChatgpt = new Enemy(CreatePosition(picBossChatgpt), CreateCollider(picBossChatgpt, PADDING));
             enemyPoisonPacket = new Enemy(CreatePosition(picEnemyPoisonPacket), CreateCollider(picEnemyPoisonPacket, PADDING));
             enemyCheeto = new Enemy(CreatePosition(picEnemyCheeto), CreateCollider(picEnemyCheeto, PADDING));
@@ -176,7 +174,7 @@ namespace Fall2020_CSC403_Project {
             }
             
 
-            // check collision with key
+            // Check collision with key
             if (HitAKey(player)) {
                 player.MoveBack();    
             }
@@ -185,8 +183,7 @@ namespace Fall2020_CSC403_Project {
                 player.MoveBack();
             }
 
-            // check collision with enemies
-
+            // Check collision with enemies
             if (enemyPoisonPacket != null)
             {
                 if (HitAChar(player, enemyPoisonPacket))
@@ -194,26 +191,11 @@ namespace Fall2020_CSC403_Project {
                     if (IsEnemyDead(enemyPoisonPacket) == true)
                     {
                         Fight(enemyPoisonPacket);
-                        // Generate a random number to get a random effect from the RandomPotion (first 3 potions will be random potion candidates)
-
-                        // In the current state, the potion cannot be generated under improper conditions, BUT
-                        // if you do something new like FLEE from battle, the potion will generate like this! Need a condition to fix this.
-                        // Wait to see how Nis implements flee
-                        //if (this.enemyPoisonPacket == null)
-                        //{
-                            // If, specifically, enemyPoisonPacket died within the battle form, after the battle generate the potion
-                            //  the other option to do this is to move rpot to inside the frmBattle instance code, but thats much heavier lifting than this
-                            //rpot = InstantiateItem(random.Next(1, 3), this, enemyPoisonPacket.Position.x, enemyPoisonPacket.Position.y);
-                        //}
 
                     }
                 }
             }
-            //else if (enemyPoisonPacket == null) 
-            //{
-                // enemyPoisonPacket died and was thus nulled after killing him
-                //rpot = InstantiateItem(random.Next(1, 3), this, enemyPoisonPacket.Position.x, enemyPoisonPacket.Position.y);
-            //}
+            
 
             if (enemyCheeto != null) {
                 if (HitAChar(player, enemyCheeto)){
@@ -225,8 +207,13 @@ namespace Fall2020_CSC403_Project {
             
             if (bossChatgpt != null) {
                 if (HitAChar(player, bossChatgpt)) {
+<<<<<<< HEAD
                     // not triggering
                     if (IsEnemyDead(bossChatgpt) == true)
+=======
+                    z = IsEnemyDead(bossChatgpt);
+                    if (z == true)
+>>>>>>> 3969f4f87fb2c3efd884b9e366d0816f620a1cc3
                     {
                         Fight(bossChatgpt);
                     }
@@ -236,14 +223,13 @@ namespace Fall2020_CSC403_Project {
         
             if (HitAnItem(player)) {
                 player.MoveBack();
-                rpot.ExecuteEffect(this); //rpot is always the handle regardless of the item called because its a random item, thus rpot
+                rpot.ExecuteEffect(FrmHome.gameplayForm); //rpot is always the handle regardless of the item called because its a random item, thus rpot
             }
 
             // update player's picture box
             picPlayer.Location = new Point((int)player.Position.x, (int)player.Position.y);
         }
         private void AllSideEnemyDied(Character c) {
-            //bool allSideEnemyDied = false;
             bool keyHit = HitAKey(player);
             bool healHit = HitAHeal(player);
 
@@ -440,22 +426,27 @@ namespace Fall2020_CSC403_Project {
             AllSideEnemyDied(other);
             return you.Collider.Intersects(other.Collider);
         }
-
+        //public static FrmBattle frmBattle;
         public void Fight(Enemy enemy) {
             player.ResetMoveSpeed();
             player.MoveBack();
-            frmBattle = FrmBattle.GetInstance(enemy, this);
+            FrmBattle.instance = FrmBattle.GetInstance(enemy);
             if (enemy.Name == "BossChatgpt") {
-                frmBattle.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.Psychedelic;
+                FrmBattle.instance.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.Psychedelic;
+                //frmBattle.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.Psychedelic;
             }
             else {
-                frmBattle.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.enemyFightBG;
+                FrmBattle.instance.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.enemyFightBG;
+                //frmBattle.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.enemyFightBG;
             }
-            frmBattle.Show();
-      
+            FrmBattle.instance.Show();
+            //frmBattle.Show();
+
             if (enemy == bossChatgpt) {
-                frmBattle.SetupForBossBattle();
+                FrmBattle.instance.SetupForBossBattle();
+                //frmBattle.SetupForBossBattle();
             }
+
         }
 
 
@@ -599,20 +590,10 @@ namespace Fall2020_CSC403_Project {
             this.picEnemyPoisonPacket.Size = new System.Drawing.Size(40, 40);
             this.picEnemyCheeto.Size = new System.Drawing.Size(40,40);
 
-            enemyPoisonPacket = new Enemy(CreatePosition(picEnemyPoisonPacket), CreateCollider(picEnemyPoisonPacket, 7));
-            enemyCheeto = new Enemy(CreatePosition(picEnemyCheeto), CreateCollider(picEnemyCheeto, 7));
-
-            enemyPoisonPacket.Img = global::Fall2020_CSC403_Project.Properties.Resources.enemy_poisonpacket;
-            enemyCheeto.Img = global::Fall2020_CSC403_Project.Properties.Resources.enemy_cheetos;
-
-            bossChatgpt.Color = Color.Black;
-            enemyPoisonPacket.Color = Color.Black;
-            enemyCheeto.Color = Color.Black;
-
-            this.picEnemyPoisonPacket.Visible = false;
+            /*this.picEnemyPoisonPacket.Visible = false;
             this.picEnemyCheeto.Visible = false;
             this.picBossChatgpt.Visible = false;
-            this.picFence0.Visible = false;
+            this.picFence0.Visible = false;*/
 
             this.picWall3.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.wall3;
             this.picWall5.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.wall3;
