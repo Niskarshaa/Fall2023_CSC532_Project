@@ -140,7 +140,7 @@ namespace Fall2020_CSC403_Project {
                     if (result.ToString() == "attack")
                     {
                         //enemy.OnAttack(-2);
-                        player.AlterHealth(-2);
+                        player.AlterHealth(-3);
                         label3.Text = $"You do 3 damage, and CGPT Attacks for 2 damage";
                     }
                     if (result.ToString() == "heal")
@@ -153,7 +153,7 @@ namespace Fall2020_CSC403_Project {
                 else // enemy.Name == other enemies
                 {
                     //enemy.OnAttack(-2);
-                    player.AlterHealth(-2);
+                    player.AlterHealth(-3);
                     simpleSFX.PlaySync();
                 }
             }

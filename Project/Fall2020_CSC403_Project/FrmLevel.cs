@@ -132,7 +132,19 @@ namespace Fall2020_CSC403_Project {
             const int MAX_HEALTHBAR_WIDTH = 200;
             lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
             lblPlayerHealthFull.Text = player.Health.ToString();
-            if (player.Health <= 16)
+            if (player.Health <= 16 && player.Health >= 13)
+            {
+                lblPlayerHealthFull.BackColor = Color.GreenYellow;
+            }
+            if (player.Health <= 12 && player.Health >= 9)
+            {
+                lblPlayerHealthFull.BackColor = Color.Yellow;
+            }
+            if (player.Health <= 8 && player.Health >= 5)
+            {
+                lblPlayerHealthFull.BackColor = Color.DarkOrange;
+            }
+            if (player.Health <= 4 && player.Health >= 1)
             {
                 lblPlayerHealthFull.BackColor = Color.DarkRed;
             }
@@ -141,7 +153,7 @@ namespace Fall2020_CSC403_Project {
 
 
         private void tmrPlayerMove_Tick(object sender, EventArgs e) {
-            bool x,y,z;
+            
             // move player
             player.Move();
 
@@ -179,8 +191,7 @@ namespace Fall2020_CSC403_Project {
             {
                 if (HitAChar(player, enemyPoisonPacket))
                 {
-                    x = IsEnemyDead(enemyPoisonPacket);
-                    if (x == true)
+                    if (IsEnemyDead(enemyPoisonPacket) == true)
                     {
                         Fight(enemyPoisonPacket);
 
@@ -191,8 +202,7 @@ namespace Fall2020_CSC403_Project {
 
             if (enemyCheeto != null) {
                 if (HitAChar(player, enemyCheeto)){
-                    y = IsEnemyDead(enemyCheeto);
-                    if (y == true) {
+                    if (IsEnemyDead(enemyCheeto) == true) {
                         Fight(enemyCheeto);
                     }
                 }
@@ -200,8 +210,7 @@ namespace Fall2020_CSC403_Project {
             
             if (bossChatgpt != null) {
                 if (HitAChar(player, bossChatgpt)) {
-                    z = IsEnemyDead(bossChatgpt);
-                    if (z == true)
+                    if (IsEnemyDead(bossChatgpt) == true)
                     {
                         Fight(bossChatgpt);
                     }
@@ -374,7 +383,7 @@ namespace Fall2020_CSC403_Project {
                         playerHasHeal = true;
                         healHitCount++;
                         picHealthPotion0.Visible = false;
-                        player.Health = player.Health + 10;
+                        player.Health = player.Health + 6;
                         healing_potion = null;
                         break;
                     }

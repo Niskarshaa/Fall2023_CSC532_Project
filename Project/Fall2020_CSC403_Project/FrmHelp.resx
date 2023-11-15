@@ -118,20 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label3.Text" xml:space="preserve">
-    <value>Objective: Your objective is to embark on an epic adventure, overcome challenges, and complete quests to achieve your goals. 
+    <value>Objective:
+Your objective is to embark on an epic adventure, overcome challenges, and complete quests to achieve your goals. 
 Explore a rich and immersive world filled with mysteries, treasures, and dangers. Your choices will shape the outcome of the story.
 
-Basic Controls:
 
-1. Movement: Use the arrow keys (or WASD) to move your character around the game world.
+Instructions:
 
-2. Interaction: Approach objects or characters and press the "Spacebar" or "E" key to interact with them.
+Movement: Use the arrow keys to move your character around the game world.
 
-3. Inventory: Press "I" to open your inventory. You can use items or equip equipment from here.
+Quit: Press "Esc" to quit the game
 
-4. Quests: Check your quest log by pressing "Q." It will provide information about your current objectives and quests.
+Home: Press "Q" to go to home
 
-5. Map: Press "M" to access your map. It will help you navigate the game world.
-</value>
+
+
+
+
+
+Have a epic battle with ChatGPT and be aware some potion might suprise you!!!</value>
   </data>
 </root>
