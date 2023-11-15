@@ -51,7 +51,7 @@ namespace Fall2020_CSC403_Project.ProjectRedPill
 
 
 
-            // Use these to make a form fadeIn
+             // Use these to make a form fadeIn
             //Opacity = 0;      //first the opacity is 0
             //t1.Interval = 100;  //we'll increase the opacity every 10ms
             //t1.Tick += new EventHandler(FadeIn);  //this calls the function that changes opacity 
