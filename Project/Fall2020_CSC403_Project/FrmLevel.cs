@@ -430,6 +430,7 @@ namespace Fall2020_CSC403_Project {
             player.ResetMoveSpeed();
             player.MoveBack();
             FrmBattle.instance = FrmBattle.GetInstance(enemy);
+            if (theme == "New") { FrmBattle.instance.playerImgChange(); }
             if (enemy.Name == "BossChatgpt") {
                 FrmBattle.instance.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.Psychedelic;
                 //frmBattle.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.Psychedelic;
@@ -589,10 +590,10 @@ namespace Fall2020_CSC403_Project {
             this.picEnemyPoisonPacket.Size = new System.Drawing.Size(40, 40);
             this.picEnemyCheeto.Size = new System.Drawing.Size(40,40);
 
-            /*this.picEnemyPoisonPacket.Visible = false;
+            this.picEnemyPoisonPacket.Visible = false;
             this.picEnemyCheeto.Visible = false;
             this.picBossChatgpt.Visible = false;
-            this.picFence0.Visible = false;*/
+            this.picFence0.Visible = false;
 
             this.picWall3.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.wall3;
             this.picWall5.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.wall3;
