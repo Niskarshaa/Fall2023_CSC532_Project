@@ -36,7 +36,7 @@ namespace Fall2020_CSC403_Project.item_system
              * EFFECT #1 : WallBoom ...maybe implement as separate item -- TODO: move to itemID 2 and make this a separate effect */
 
             EffectEvent(frmLevel, 18);
-
+            
             // Remove all walls from map (or make them all non enabled or something
             // also execute a battle_screen type popup with a boom that disappears shortly after
             for (int w = 0; w < 13; w++)
@@ -61,6 +61,7 @@ namespace Fall2020_CSC403_Project.item_system
 
             effectEventPlayer = new SoundPlayer(global::Fall2020_CSC403_Project.Properties.Resources.wallBoomSound1);
             effectEventPlayer.Play();
+            
 
             picEffectEvent = new System.Windows.Forms.PictureBox();
 
@@ -145,9 +146,6 @@ namespace Fall2020_CSC403_Project.item_system
             // Remove the image of the fence after gif plays for however many seconds
             frmLevel.picFence0.Visible = false;
             frmLevel.fences = null;
-            //frmLevel
-            //frmLevel.picDialog0.Visible = false;
-            //frmLevel.dialog[0].Collider = null;
         }
 
     }
