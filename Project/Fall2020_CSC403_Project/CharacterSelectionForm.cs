@@ -60,9 +60,16 @@ namespace Fall2020_CSC403_Project
                     ChangeImage(currentImageIndex);
                     break;
 
-                case Keys.Enter:
-                    SelectedCharacter = GetCharacterFromIndex(currentImageIndex);
-                    OpenFrmLevelWithSelectedCharacter();
+                case Keys.Escape:
+                    DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        Application.Exit();
+                    }
+                    break;
+                case Keys.Q:
+                    Program.frmHome.Show();
+                    this.Hide();
                     break;
             }
         }

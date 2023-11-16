@@ -50,19 +50,19 @@
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(684, 27);
+            this.label1.Location = new System.Drawing.Point(674, 646);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(497, 102);
+            this.label1.Size = new System.Drawing.Size(484, 102);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Select your preferred player by using \r\nthe arrow keys and press Enter \r\nto start" +
-    " the game in Classic Theme";
+            this.label1.Text = "Press arrow keys to select characters\r\n       Press Enter to Start the game\r\n    " +
+    "    Press Q to go back to home";
             // 
             // CharacterSelectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.home;
-            this.ClientSize = new System.Drawing.Size(1796, 610);
+            this.ClientSize = new System.Drawing.Size(1796, 865);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
