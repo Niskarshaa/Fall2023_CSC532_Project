@@ -36,9 +36,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.home;
-            this.pictureBox1.Location = new System.Drawing.Point(726, 99);
+            this.pictureBox1.Location = new System.Drawing.Point(668, 144);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(639, 584);
+            this.pictureBox1.Size = new System.Drawing.Size(568, 467);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -49,20 +50,22 @@
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(809, 40);
+            this.label1.Location = new System.Drawing.Point(684, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(437, 41);
+            this.label1.Size = new System.Drawing.Size(497, 102);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Select your preferred player";
+            this.label1.Text = "Select your preferred player by using \r\nthe arrow keys and press Enter \r\nto start" +
+    " the game in Classic Theme";
             // 
             // CharacterSelectionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.home;
-            this.ClientSize = new System.Drawing.Size(1394, 517);
+            this.ClientSize = new System.Drawing.Size(1796, 610);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CharacterSelectionForm";
             this.Text = "Character Selection";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
